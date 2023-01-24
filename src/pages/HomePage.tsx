@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useEffect,
+  useState,
+} from "react";
 import {
   useLazyGetUserRepoQuery,
   useSearchUsersQuery,
@@ -9,6 +14,7 @@ import RepoCard from "../components/repoCard";
 const HomePage = () => {
   const [drop, setDrop] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
   const debounced = useDebounce(search);
   const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
     skip: debounced.length < 3,
@@ -27,6 +33,11 @@ const HomePage = () => {
     setDrop(false);
   };
 
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearch(value);
+  };
+
   return (
     <div className="flex justify-center pt-10 mx-auto h-screen w-screen">
       {isError ? (
@@ -38,7 +49,7 @@ const HomePage = () => {
           className="border py-2 px-4 w-full h-[42px] mb-2"
           placeholder="Search for Github username..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={onChange}
         />
         {drop ? (
           <ul className=" list-none absolute top-[42px] left-0 right-0 max-h-[200px] overflow-y-scroll shadow-md bg-white">
