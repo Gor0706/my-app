@@ -6,6 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
+import Button from "@mui/material/Button";
 
 
 
@@ -18,18 +19,19 @@ function createData(
 	address: string,
 	email: string,
 	status: string,
+	action: string,
 ) {
-	return { id, name, middleName, lastName, address, email, status };
+	return { id, name, middleName, lastName, address, email, status, action };
 }
 
 const rows = [
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
-	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
+	createData(123, 'Bennett', 'Jeremiah', 'Harrison', '950 Ridge RD C25', 'bjharrison@gmail.com', 'Terminated', 'VIEW'),
 ];
 
 export default function BasicTable() {
@@ -39,12 +41,13 @@ export default function BasicTable() {
 				<TableHead>
 					<TableRow>
 						<TableCell>Customer ID</TableCell>
-						<TableCell align="right">Name</TableCell>
-						<TableCell align="right">Middle Name</TableCell>
-						<TableCell align="right">Last Name</TableCell>
-						<TableCell align="right">Address</TableCell>
-						<TableCell align="right">Email</TableCell>
-						<TableCell align="right" >Status</TableCell>
+						<TableCell align="left">Name</TableCell>
+						<TableCell align="left">Middle Name</TableCell>
+						<TableCell align="left">Last Name</TableCell>
+						<TableCell align="left">Address</TableCell>
+						<TableCell align="left">Email</TableCell>
+						<TableCell align="left" >Status</TableCell>
+						<TableCell align="left" >Action</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -56,13 +59,16 @@ export default function BasicTable() {
 							<TableCell component="th" scope="row">
 								{row.id}
 							</TableCell>
-							<TableCell align="right">{row.name}</TableCell>
-							<TableCell align="right">{row.middleName}</TableCell>
-							<TableCell align="right">{row.lastName}</TableCell>
-							<TableCell align="right">{row.address}</TableCell>
-							<TableCell align="right">{row.email}</TableCell>
-							<TableCell align="right">
+							<TableCell align="left">{row.name}</TableCell>
+							<TableCell align="left">{row.middleName}</TableCell>
+							<TableCell align="left">{row.lastName}</TableCell>
+							<TableCell align="left">{row.address}</TableCell>
+							<TableCell align="left">{row.email}</TableCell>
+							<TableCell align="left">
 								<Chip size="small" label={row.status} color="error" />
+							</TableCell>
+							<TableCell align="left">
+								<Button variant="outlined" size="small" >{row.action}</Button>
 							</TableCell>
 						</TableRow>
 					))}
